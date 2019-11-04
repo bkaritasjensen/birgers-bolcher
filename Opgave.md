@@ -71,9 +71,14 @@ Skriv en sql sætning for hver af følgende
 ## Øvelse 3
 3.1	Normaliser tabellen Bolcher så der dannes ”domænetabeller” til de felter hvor flere bolcher ofte har samme værdi.
 
+
+
 ## Øvelse 4
 
 4.1	Gentag øvelse 2, men nu med inner joins
+
+	
+
 ## Øvelse 5
 Nettopris for et bolche er råvareprisen plus 250 % (begge uden moms) 
 
