@@ -70,12 +70,52 @@ Skriv en sql sætning for hver af følgende
 
 ## Øvelse 3
 3.1	Normaliser tabellen Bolcher så der dannes ”domænetabeller” til de felter hvor flere bolcher ofte har samme værdi.
+	SELECT * FROM `bolcher` INNER JOIN `bolche_smags_typer` ON bolcher.FK_bolche_smags_type_id = bolche_smags_typer.bolche_smags_type_id WHERE `bolche_navn` = "Jordbær"
 
 
 
 ## Øvelse 4
 
 4.1	Gentag øvelse 2, men nu med inner joins
+
+
+		2.1	Udskriv alle informationer om alle bolcher. 
+			SELECT * FROM `bolcher`
+
+
+		2.2	Find og udskriv navnene på alle de røde bolcher.
+			SELECT * FROM `bolcher` INNER JOIN `bolche_farver` ON bolcher.FK_bolche_farve_id = bolche_farver.bolche_farve_id WHERE `bolche_farve_beskrivelse` = "rød"
+
+
+		2.3	Find og udskriv navnene på alle de røde og de blå bolcher, i samme SQL udtræk.
+			SELECT * FROM `bolcher` INNER JOIN `bolche_farver` ON bolcher.FK_bolche_farve_id = bolche_farver.bolche_farve_id WHERE `bolche_farve_beskrivelse` = "rød" OR `bolche_farve_beskrivelse` = "blå"
+
+
+		2.4	Find og udskriv navnene på alle bolcher, der ikke er røde, sorteret alfabetisk.
+			SELECT * FROM `bolcher` INNER JOIN `bolche_farver` ON bolcher.FK_bolche_farve_id = bolche_farver.bolche_farve_id WHERE not `bolche_farve_beskrivelse` = "rød" ORDER BY `bolche_navn` ASC
+
+
+		2.5	Find og udskriv navnene på alle bolcher som starter med et “B”.
+			SELECT * FROM `bolcher` WHERE bolche_navn LIKE "b%"
+
+
+		2.6	Find og udskriv navene på alle bolcher, hvor der i navnet findes mindst ét “e”.
+			SELECT * FROM `bolcher` WHERE bolche_navn LIKE "%e%"
+
+		2.7	Find og udskriv navn og vægt på alle bolcher der vejer mindre end 10 gram, sorter stigende efter vægt.
+			SELECT * FROM `bolcher` WHERE bolche_vaegt <10 ORDER BY bolche_vaegt ASC
+
+
+		2.8	Find og udskriv navne på alle bolcher, der vejer mellem 10 og 12 gram (begge tal inklusiv), sorteret alfabetisk og derefter vægt.
+			SELECT * FROM `bolcher` WHERE `bolche_vaegt` BETWEEN 10 AND 12 ORDER BY `bolche_vaegt`, `bolche_navn` ASC
+
+
+		2.9	Find og udskriv de tre største (tungeste) bolcher.
+			SELECT * FROM `bolcher` ORDER BY `bolche_vaegt` DESC LIMIT 3
+
+
+		2.10 Udskriv alle informationer om et tilfældigt bolche, udvalgt af systemet (sql).
+			SELECT * FROM `bolche` ORDER BY RAND() LIMIT 1
 
 	
 
