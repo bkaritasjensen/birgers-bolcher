@@ -121,8 +121,10 @@ Skriv en sql sætning for hver af følgende
 
 ## Øvelse 5
 Nettopris for et bolche er råvareprisen plus 250 % (begge uden moms) 
+	SELECT *, (`bolche_raavare-pris` * 3.5) AS nettopris FROM `bolcher`
 
 5.1	Udskriv en prisliste med bolchenavn og kilopris henholdsvis med og uden moms
+
 
 ## Øvelse 6
 
