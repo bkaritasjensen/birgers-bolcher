@@ -103,15 +103,15 @@ Skriv en sql sætning for hver af følgende
 			SELECT * FROM `bolcher` WHERE bolche_navn LIKE "%e%"
 
 		2.7	Find og udskriv navn og vægt på alle bolcher der vejer mindre end 10 gram, sorter stigende efter vægt.
-			SELECT * FROM `bolcher` WHERE bolche_vaegt <10 ORDER BY bolche_vaegt ASC
+			SELECT * FROM `bolcher` INNER JOIN `bolche_vaegte` ON bolcher.FK_bolche_vaegt_id = bolche_vaegte.bolche_vaegt_id WHERE bolche_vaegt_beskrivelse <10 ORDER BY bolche_vaegt_beskrivelse ASC
 
 
 		2.8	Find og udskriv navne på alle bolcher, der vejer mellem 10 og 12 gram (begge tal inklusiv), sorteret alfabetisk og derefter vægt.
-			SELECT * FROM `bolcher` WHERE `bolche_vaegt` BETWEEN 10 AND 12 ORDER BY `bolche_vaegt`, `bolche_navn` ASC
+			SELECT * FROM `bolcher` INNER JOIN `bolche_vaegte` ON bolcher.FK_bolche_vaegt_id = bolche_vaegte.bolche_vaegt_id WHERE `bolche_vaegt_beskrivelse` BETWEEN 10 AND 12 ORDER BY `bolche_vaegt_beskrivelse`, `bolche_navn` ASC
 
 
 		2.9	Find og udskriv de tre største (tungeste) bolcher.
-			SELECT * FROM `bolcher` ORDER BY `bolche_vaegt` DESC LIMIT 3
+			SELECT * FROM `bolcher` INNER JOIN `bolche_vaegte` ON bolcher.FK_bolche_vaegt_id = bolche_vaegte.bolche_vaegt_id ORDER BY `bolche_vaegt_beskrivelse` DESC LIMIT 3
 
 
 		2.10 Udskriv alle informationer om et tilfældigt bolche, udvalgt af systemet (sql).
