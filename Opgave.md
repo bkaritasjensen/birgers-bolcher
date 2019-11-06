@@ -135,12 +135,22 @@ Nettopris for et bolche er råvareprisen plus 250 % (begge uden moms)
 ## Øvelse 6
 
 6.1	Løs opgave 2.3 ved brug af IN
+	2.3	Find og udskriv navnene på alle de røde og de blå bolcher, i samme SQL udtræk.
+		SELECT * FROM `bolcher` INNER JOIN `bolche_farver` ON bolcher.FK_bolche_farve_id = bolche_farver.bolche_farve_id WHERE `bolche_farve_beskrivelse` IN ('Rød', 'Blå')
+
 
 6.2	Løs opgave 2.4 ved brug af NOT IN
+	2.4	Find og udskriv navnene på alle bolcher, der ikke er røde, sorteret alfabetisk.
+	SELECT * FROM `bolcher` INNER JOIN `bolche_farver` ON bolcher.FK_bolche_farve_id = bolche_farver.bolche_farve_id WHERE not `bolche_farve_beskrivelse` IN ('Rød') ORDER BY `bolche_navn` ASC
+
 
 6.3	Udskriv hvor mange bolscher der vejer under 15 g.
+	SELECT * FROM `bolcher` INNER JOIN `bolche_vaegte` ON bolcher.FK_bolche_vaegt_id = bolche_vaegte.bolche_vaegt_id WHERE bolche_vaegt_beskrivelse <15
+
 
 6.4	Udskriv hvor mange forskellige forskellige bolcher der er i tabellen
+	
+
 
 6.5	Udskriv gennemsnitsprisen per bolche
 
