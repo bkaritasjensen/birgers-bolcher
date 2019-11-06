@@ -124,6 +124,12 @@ Nettopris for et bolche er råvareprisen plus 250 % (begge uden moms)
 	SELECT *, (`bolche_raavare-pris` * 3.5) AS nettopris FROM `bolcher`
 
 5.1	Udskriv en prisliste med bolchenavn og kilopris henholdsvis med og uden moms
+	SELECT `bolche_navn`,
+    (`bolche_raavare-pris` * 3.5) AS nettopris,
+    ROUND(`bolche_raavare-pris` * 3.5 / `FK_bolche_vaegt_id`, 2) AS `pris pr gram`,
+    ROUND(`bolche_raavare-pris` * 3.5 / `FK_bolche_vaegt_id` * 1000, 2) AS `pris pr kilo`,
+    ROUND(`bolche_raavare-pris` * 3.5 / `FK_bolche_vaegt_id` * 1000 * 1.25, 2) AS `pris pr. kilo m. moms`
+	FROM `bolcher`
 
 
 ## Øvelse 6
