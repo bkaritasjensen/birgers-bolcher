@@ -145,13 +145,22 @@ Nettopris for et bolche er råvareprisen plus 250 % (begge uden moms)
 
 
 6.3	Udskriv hvor mange bolscher der vejer under 15 g.
-	SELECT * FROM `bolcher` INNER JOIN `bolche_vaegte` ON bolcher.FK_bolche_vaegt_id = bolche_vaegte.bolche_vaegt_id WHERE bolche_vaegt_beskrivelse <15
+	SELECT COUNT(*) FROM `bolcher` 
+    INNER JOIN `bolche_vaegte` ON bolcher.FK_bolche_vaegt_id = bolche_vaegte.bolche_vaegt_id 
+   	WHERE `bolche_vaegt_beskrivelse` <15
 
 
 6.4	Udskriv hvor mange forskellige forskellige bolcher der er i tabellen
-	
+	SELECT COUNT(*)
+	FROM `bolcher`
 
 
 6.5	Udskriv gennemsnitsprisen per bolche
+	SELECT AVG (`bolche_raavare-pris`)
+	FROM `bolcher`
+
 
 6.6	Udskriv navn og pris på det dyreste og billigste bolche
+	SELECT * FROM `bolcher`
+	WHERE `bolche_raavare-pris` = (SELECT MIN(`bolche_raavare-pris`)FROM `bolcher`)
+	OR `bolche_raavare-pris` = (SELECT MAX(`bolche_raavare-pris`)FROM `bolcher`) ORDER BY `bolche_raavare-pris` DESC
